@@ -20,7 +20,7 @@ function isAllTrue(array, fn) {
   if (typeof fn != 'function') {
     throw new Error('fn is not a function');
   }
-  if (!Array.isArray(array) || array.length <= 0) {
+  if (!Array.isArray(array) || !array.length) {
     throw new Error('empty array');
   }
   for (const el of array) {
@@ -51,7 +51,7 @@ function isSomeTrue(array, fn) {
   if (typeof fn != 'function') {
     throw new Error('fn is not a function');
   }
-  if (!Array.isArray(array) || array.length <= 0) {
+  if (!Array.isArray(array) || !array.length) {
     throw new Error('empty array');
   }
   for (const el of array) {
@@ -74,7 +74,7 @@ function isSomeTrue(array, fn) {
    - fn не является функцией (с текстом "fn is not a function")
  */
 function returnBadArguments(fn, ...args) {
-  if (typeof fn != 'function') {
+  if (typeof fn !== 'function') {
     throw new Error('fn is not a function');
   }
 
@@ -133,7 +133,7 @@ function calculator(number = 0) {
     },
     div: function () {
       for (let i = 0; i < arguments.length; i++) {
-        if (arguments[i] === 0) {
+        if (!arguments[i]) {
           throw new Error('division by 0');
         }
         number /= arguments[i];
